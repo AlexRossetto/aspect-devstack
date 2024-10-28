@@ -11,9 +11,6 @@ export class AppointmentEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id_appointment: number;
   
-  @Column({ type: 'varchar', nullable: false })
-  name: string;
-
   @Column({ type: 'varchar', nullable: false})
   specialty: string;
 
