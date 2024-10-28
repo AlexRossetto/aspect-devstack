@@ -1,0 +1,8 @@
+[submodule "backend"]
+	path = backend
+	url = git@github.com:AlexRossetto/aspect-backend.git
+	branch = main
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:AlexRossetto/aspect-frontend.git
+	branch = main
