@@ -23,7 +23,7 @@ const GetListExamsComposer = async(
           error,
           message: `[COMPOSER]: Catch Error (GetListExamsComposer)`,
       });
-      return InternalServerError;
+      return InternalServerError(HttpResponse);
   }
 }
 

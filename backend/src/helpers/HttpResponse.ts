@@ -144,15 +144,5 @@ const TooManyRequests = (
 
 export {
     OK,
-    OKNoContent,
-    NotAcceptable,
     InternalServerError,
-    LoginPassValid,
-    LoginPassInvalid,
-    Authorized,
-    NotAuthorized,
-    NotPermission,
-    NotFound,
-    BadRequest,
-    TooManyRequests,
 };

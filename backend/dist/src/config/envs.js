@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LOG_TYPEORM_ENABLE = exports.DB_DATABASE = exports.DB_PASSWORD = exports.DB_USER = exports.DB_PORT = exports.DB_HOST = void 0;
+const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE, LOG_TYPEORM_ENABLE, } = process.env;
+exports.DB_HOST = DB_HOST;
+exports.DB_PORT = DB_PORT;
+exports.DB_USER = DB_USER;
+exports.DB_PASSWORD = DB_PASSWORD;
+exports.DB_DATABASE = DB_DATABASE;
+exports.LOG_TYPEORM_ENABLE = LOG_TYPEORM_ENABLE;

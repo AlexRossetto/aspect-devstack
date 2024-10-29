@@ -2,11 +2,9 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  CreateDateColumn,
 } from 'typeorm';
 
-@Entity('appointment')
+@Entity('appointments')
 export class AppointmentEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id_appointment: number;
@@ -20,10 +18,5 @@ export class AppointmentEntity {
   @Column({ type: 'varchar', nullable: true})
   comments: string;
 
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  @CreateDateColumn()
-  created_at: Date;
   
 }

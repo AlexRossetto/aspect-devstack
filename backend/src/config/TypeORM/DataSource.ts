@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
     password: DB_PASSWORD,
     database: DB_DATABASE,
     entities: [
-        path.join(__dirname, '../../repositores/typeorm/entities/*.{js,ts}'),
+        path.join(__dirname, '../repositories/typeorm/entities/*.{js,ts}'),
     ],
     logging: LOG_TYPEORM_ENABLE === 'true',
 });

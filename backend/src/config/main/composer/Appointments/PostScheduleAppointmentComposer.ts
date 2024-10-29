@@ -20,7 +20,13 @@ const PostScheduleAppointmentsComposer = async(
 ) => {
   try{
     const AppointmentRepository = new AppointmentRepositoryClass();
-    const res = await PostScheduleAppointmentUseCase({AppointmentRepository, appointment: HttpRequest.body});
+
+    const data = {
+      ...HttpRequest.body,
+      date: new Date(2024,12,22)
+    }
+
+    const res = await PostScheduleAppointmentUseCase({AppointmentRepository, appointment: data});
 
     return OK(HttpResponse, res)
 

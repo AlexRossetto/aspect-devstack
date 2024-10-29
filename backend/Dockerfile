@@ -12,9 +12,7 @@ RUN apk upgrade --update-cache --available && \
     apk add openssl && \
     rm -rf /var/cache/apk/*
 
-RUN npm i -g yarn
-
-RUN yarn i
+RUN yarn install
 
 ENV NODE_ENV=development
 

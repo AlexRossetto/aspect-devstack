@@ -39,8 +39,7 @@ export class AppointmentRepositoryClass {
 
   async scheduleAppointment(data  : ScheduleAppointmentType) {
     try {
-      const res = await this.appointment.create(data);
-
+      const res = await this.appointment.insert(data);
       return {
         res,
       };
