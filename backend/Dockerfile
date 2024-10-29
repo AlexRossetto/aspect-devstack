@@ -1,21 +1,23 @@
-FROM node:20.18.0-alpine3.20
-
-ENV TZ="America/Sao_Paulo"
+FROM node:18 AS build 
 
 WORKDIR /application
 
-COPY . /application
-
-RUN rm -Rf .next/cache
-
-RUN apk upgrade --update-cache --available && \
-    apk add openssl && \
-    rm -rf /var/cache/apk/*
-
-RUN yarn install
+COPY . /application/
 
 ENV NODE_ENV=development
 
+RUN ls -A
+
+RUN yarn install && yarn build
+
+FROM node:18 AS final
+
+WORKDIR /application
+
+COPY --from=build /application/dist /application
+
+COPY --from=build /application/node_modules /application/node_modules
+
 EXPOSE 5000
 
-CMD ["yarn" , "dev"]
+CMD ["node" ,"app.js"]
