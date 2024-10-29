@@ -1,19 +1,29 @@
+version: "3"
+
 services:
 
   mysql5734:
     image: "mysql:5.7.34"
-    command: ["--wait_timeout=30"]
+    command: ["--wait_timeout=80000", "--interactive_timeout=80000", "--net_read_timeout=80000"]
+    restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
     ports:
       - 3306:3306
-  # backend:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./backend/Dockerfile
-  #   command: yarn dev
-  #   volumes:
-  #     - ./backend:/application
-  #     - ./backend/node_modules:/application/node_modules
-  #   ports:
-  #     - 5000:5000
+    expose:
+      - '3306'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+    command: sh -c "until nc -z mysql5734 3306; do echo 'Waiting for MySQL...'; sleep 2; done; yarn dev"
+    volumes:
+      - ./backend:/application
+      - ./backend/node_modules:/application/node_modules
+    ports:
+      - 5000:5000
+    depends_on:
+      - mysql5734
