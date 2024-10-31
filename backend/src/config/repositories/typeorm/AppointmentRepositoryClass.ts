@@ -7,9 +7,11 @@ interface DeleteAppointmentType {
 }
 
 interface ScheduleAppointmentType {
-  specialty: string;
-  date: Date;
-  comments?: string;
+  time_id: number
+  user_id: number
+  appointment_date: Date
+  exam_id: number
+  comment?: string
 }
 
 export class AppointmentRepositoryClass {
@@ -19,14 +21,24 @@ export class AppointmentRepositoryClass {
     this.appointment = AppDataSource.getRepository(AppointmentEntity);
   }
 
-
   async listAppointments() {
   try {
-    const [data] = await this.appointment.findAndCount();
+      const appointments = await this.appointment.find({
+        relations: ['exam', 'time'], 
+    });
+
+   const data = appointments.map(appointment => ({
+        appointment_id: appointment.appointment_id,
+        user_id: appointment.user_id,
+        time: appointment.time,
+        appointment_date: appointment.appointment_date,
+        comments: appointment.comment,
+        exam_name: appointment.exam ? appointment.exam.exam_name : null,
+    }));
 
     return {
-      data,
-    };
+      data
+    }
   } catch(error: any) {
     logger.error({
       error,
@@ -37,9 +49,15 @@ export class AppointmentRepositoryClass {
   }
 
 
-  async scheduleAppointment(data  : ScheduleAppointmentType) {
+  async scheduleAppointment(data : ScheduleAppointmentType) {
     try {
-      const res = await this.appointment.insert(data);
+      const res = await this.appointment.save({
+        user_id: data.user_id,
+        appointment_date: data.appointment_date,
+        comment: data.comment,
+        exam: { exam_id: data.exam_id },
+        time: { time_id: data.time_id }
+      })
       return {
         res,
       };

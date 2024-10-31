@@ -11,7 +11,7 @@ export class ExamsRepositoryClass {
 
   async listExams () {
     try {
-      const [data] = await this.exam.findAndCount();
+      const data = await this.exam.find();
 
       return {
         data,

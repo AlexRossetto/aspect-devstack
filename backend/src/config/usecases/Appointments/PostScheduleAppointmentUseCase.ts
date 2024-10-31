@@ -4,9 +4,11 @@ import { AppointmentRepositoryClass } from '../../repositories/typeorm/Appointme
 interface PostScheduleAppointmentType {
   AppointmentRepository: AppointmentRepositoryClass,
   appointment: {
-    specialty: string;
-    date: Date;
-    comments?: string;
+    time_id: number
+    user_id: number
+    appointment_date: Date
+    exam_id: number
+    comment?: string
   }
 }
 

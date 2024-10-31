@@ -1,18 +1,18 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { AvailableTimesEntity } from './AvailableTimeEntity';
+import { AppointmentEntity } from './AppointmentEntity';
 
 @Entity('exams')
 export class ExamsEntity {
-  @PrimaryGeneratedColumn({ type: 'int' })
-  id_exam: number;
-  
-  @Column({ type: 'varchar', nullable: false })
-  name: string;
+    @PrimaryGeneratedColumn()
+    exam_id: number;
 
-  @Column({ type: 'varchar', nullable: false})
-  specialty: string;
-  
+    @Column({ type: 'varchar', length: 255 })
+    exam_name: string;
+
+    @OneToMany(() => AppointmentEntity, (appointment) => appointment.exam)
+    appointments: AppointmentEntity[];
+
+    @OneToMany(() => AvailableTimesEntity, (availableTime) => availableTime.exam)
+    availableTimes: AvailableTimesEntity[];
 }

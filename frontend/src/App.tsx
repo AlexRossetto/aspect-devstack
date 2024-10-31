@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { fetchAvailableTimes,fetchExams } from './helpers/functions/Fetch'
 import './App.css';
+import './global.css'
+
+import Header from './pages/components/Header';
+import CenteredFormCard from './pages/components/FormCard/FormCard';
+import CardGrid from './pages/components/CardGrid/CardGrid';
+import Home from './pages/Home';
+import { AppointmentProvider } from './context/ContextProvider';
 
 function App() {
+  const [exams,setExams] = useState([]);
+  const [examsTime, setExamsTime] = useState([]);
+
+  const fetchData = async () => {
+    fetchExams(setExams);
+    fetchAvailableTimes(setExamsTime);
+  }
+
+  useEffect(() => { 
+    fetchData();
+  }, [])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <AppointmentProvider>
+        <Home>
+          <div style={{maxHeight: '800px'}}>
+            <CenteredFormCard availableTimes={examsTime} examsList={exams}/>
+          </div>
+            <CardGrid />
+        </Home>
+      </AppointmentProvider>
     </div>
   );
 }

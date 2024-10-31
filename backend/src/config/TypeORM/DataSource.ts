@@ -17,6 +17,7 @@ export const AppDataSource = new DataSource({
     username: DB_USER,
     password: DB_PASSWORD,
     database: DB_DATABASE,
+    synchronize: true,
     entities: [
         path.join(__dirname, '../repositories/typeorm/entities/*.{js,ts}'),
     ],

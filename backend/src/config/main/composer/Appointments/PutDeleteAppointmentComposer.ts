@@ -10,7 +10,7 @@ interface PutDeleteAppointmentComposer {
   appointment: {
     specialty: string;
     date: Date;
-    comments?: string;
+    comment?: string;
   }
 }
 

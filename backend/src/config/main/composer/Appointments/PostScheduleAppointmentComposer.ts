@@ -3,14 +3,13 @@ import { AppointmentRepositoryClass } from '../../../repositories/typeorm/Appoin
 import  PostScheduleAppointmentUseCase  from '../../../usecases/Appointments/PostScheduleAppointmentUseCase'
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
-
 import logger from '../../../PinoLogger';
 
 interface PostScheduleAppointmentType {
   appointment: {
     specialty: string;
     date: Date;
-    comments?: string;
+    comment?: string;
   }
 }
 
@@ -21,12 +20,7 @@ const PostScheduleAppointmentsComposer = async(
   try{
     const AppointmentRepository = new AppointmentRepositoryClass();
 
-    const data = {
-      ...HttpRequest.body,
-      date: new Date(2024,12,22)
-    }
-
-    const res = await PostScheduleAppointmentUseCase({AppointmentRepository, appointment: data});
+    const res = await PostScheduleAppointmentUseCase({AppointmentRepository, appointment: HttpRequest.body});
 
     return OK(HttpResponse, res)
 

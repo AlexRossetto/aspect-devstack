@@ -1,22 +1,26 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { AvailableTimesEntity } from './AvailableTimeEntity';
+import { ExamsEntity } from './ExamEntity';
 
 @Entity('appointments')
 export class AppointmentEntity {
-  @PrimaryGeneratedColumn({ type: 'int' })
-  id_appointment: number;
-  
-  @Column({ type: 'varchar', nullable: false})
-  specialty: string;
+    @PrimaryGeneratedColumn()
+    appointment_id: number;
 
-  @Column({ type: 'date', nullable: false })
-  date: Date;
+    @ManyToOne(() => AvailableTimesEntity, (availableTime) => availableTime.appointments)
+    @JoinColumn({ name: 'time_id' })
+    time: AvailableTimesEntity;
 
-  @Column({ type: 'varchar', nullable: true})
-  comments: string;
+    @Column({ type: 'int' })
+    user_id: number;
 
-  
+    @ManyToOne(() => ExamsEntity, (exam) => exam.appointments)
+    @JoinColumn({ name: 'exam_id' })
+    exam: ExamsEntity;
+
+    @Column({ type: 'date' })
+    appointment_date: Date;
+
+    @Column({ type: 'varchar', nullable: true })
+    comment: string;
 }
