@@ -23,6 +23,6 @@ The project currently runs on the following URL: http://localhost:8181/
 To run the project via Docker Compose, use the following command:
 
 ```bash
-docker compose build backend && docker compose build frontend && docker compose up -d ´
+docker compose build backend && docker compose build frontend && docker compose up -d
 
 
