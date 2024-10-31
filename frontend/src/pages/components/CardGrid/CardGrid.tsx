@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Card from '../AppointmenntCard/AppointmentCard';
+import Card from '../AppointmentCard/AppointmentCard';
 import { Box, Modal, Typography, Button } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
@@ -50,7 +50,7 @@ const groupedAppointments = groupAppointmentsByDate(appointmentsList);
 
   return (
     <div style={cardGridContainerStyle}>
-      <Typography padding={4} variant="h6" component="h2" fontWeight="bold">
+      <Typography style={{ borderBottom: '1px solid white' }} padding={4} variant="h6" component="h2" fontWeight="bold">
         Scheduled Appointments
       </Typography>
       <div style={gridStyle}>
