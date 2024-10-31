@@ -2,12 +2,21 @@
 
 An application that allows users to schedule appointments by selecting an exam, a date, and a pre-determined set of available times.
 
+
+
+
+
 ## Tech Stack
 
 - **Front-end**: React, TypeScript, Axios, MUI (Material-UI)
 - **Back-end**: NodeJS, TypeScript, Express, TypeORM
 - **Database**: MySQL
 - **Build Tool**: Docker
+
+
+## Project URL
+
+The project currently runs on the following URL: http://localhost:8181/
 
 ## How to Run the Project
 
