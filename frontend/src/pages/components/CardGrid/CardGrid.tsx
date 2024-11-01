@@ -30,9 +30,6 @@ const CardGrid = () => {
     groupedAppointments = groupAppointmentsByDate(appointmentsList);
   }, [appointmentsList])
 
-  console.log(groupedAppointments, "o que tá chegando aqui caralho?")
-
-
   const handleOpen = (appointment: AppointmentType) => {
       setSelectedCard(appointment);
       setOpen(true);

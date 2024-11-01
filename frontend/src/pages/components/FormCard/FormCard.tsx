@@ -52,8 +52,6 @@ const CenteredFormCard = ({ availableTimes, examsList }: CenteredFormCardProps) 
           !bookedTimeIds.includes(availableTime.time_id)
       );
 
-      console.log(filteredAvailableTimes, 'filtered')
-
       setAvailableTimesdate(filteredAvailableTimes);
 
       if (filteredAvailableTimes.length > 0) {
