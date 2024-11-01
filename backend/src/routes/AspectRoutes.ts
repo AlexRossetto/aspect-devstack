@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import GetListExamsComposer from '../config/main/composer/Exams/GetListExamsComposer';
-import GetListAppointmentsComposer from '../config/main/composer/Appointments/GetListAppointmentsComposer';
-import PostScheduleAppointmentsComposer from '../config/main/composer/Appointments/PostScheduleAppointmentComposer';
-import PutDeleteAppointmentsComposer from '../config/main/composer/Appointments/PutDeleteAppointmentComposer';
-import GetAvailableTimesComposer from '../config/main/composer/Availabletimes/GetListAvailableTimesComposer';
+import GetListExamsComposer from '../config/main/composer/exams/GetListExamsComposer';
+import GetListAppointmentsComposer from '../config/main/composer/appointments/GetListAppointmentsComposer';
+import PostScheduleAppointmentsComposer from '../config/main/composer/appointments/PostScheduleAppointmentComposer';
+import PutDeleteAppointmentsComposer from '../config/main/composer/appointments/PutDeleteAppointmentComposer';
+import GetAvailableTimesComposer from '../config/main/composer/availabletimes/GetListAvailableTimesComposer';
 
 const router = Router();
 

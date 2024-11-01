@@ -4,8 +4,6 @@ An application that allows users to schedule appointments by selecting an exam, 
 
 
 
-
-
 ## Tech Stack
 
 - **Front-end**: React, TypeScript, Axios, MUI (Material-UI)
@@ -20,9 +18,15 @@ The project currently runs on the following URL: http://localhost:8181/
 
 ## How to Run the Project
 
-To run the project via Docker Compose, use the following command:
+ # Create a .env file:
+  
+  Create a .env file following the example in the .env.example file.
 
-```bash
-docker compose build backend && docker compose build frontend && docker compose up -d
+ # Run docker
+
+  To run the project via Docker Compose, use the following command:
+
+  ```bash
+  docker compose build backend && docker compose build frontend && docker compose up -d
 
 
