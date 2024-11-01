@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AppointmentRepositoryClass } from '../../../repositories/typeorm/AppointmentRepositoryClass';
-import  PutDeleteAppointmentsUseCase  from '../../../usecases/Appointments/PutDeleteAppointmentUseCase'
+import  PutDeleteAppointmentsUseCase  from '../../../usecases/appointments/PutDeleteAppointmentUseCase'
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
 

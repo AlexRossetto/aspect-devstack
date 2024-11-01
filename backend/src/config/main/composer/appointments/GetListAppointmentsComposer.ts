@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AppointmentRepositoryClass } from '../../../repositories/typeorm/AppointmentRepositoryClass';
-import GetListAppointmentsUseCase from '../../../usecases/Appointments/GetListAppointmentsUseCase';
+import GetListAppointmentsUseCase from '../../../usecases/appointments/GetListAppointmentsUseCase';
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
 

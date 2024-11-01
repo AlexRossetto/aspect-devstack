@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Card, CardContent, TextField, Button, Typography, Box, MenuItem, ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import api from '../../../services/api';
-import { getTomorrowsDate } from '../../../helpers/functions/Date';
+import { getTomorrowsDate } from '../../../helpers/functions/date';
 import { useAppointmentContext } from '../../../helpers/functions/useAppointmentContext';
 import { Appointment,AvailableTime, CenteredFormCardProps, Exam, FormDataType } from './types';
 import { cardSelect, gridStyleTime } from './styles'

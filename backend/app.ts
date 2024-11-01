@@ -4,7 +4,7 @@ import { resolve } from 'path';
 dotenv.config({path: resolve(__dirname, '..', '.env')});
 
 import AppConfig from './src/config/AppConfig';
-import { AppDataSource } from './src/config/TypeORM/DataSource';
+import { AppDataSource } from './src/config/typeorm/DataSource';
 import logger from './src/config/PinoLogger';
 
 AppDataSource.initialize()

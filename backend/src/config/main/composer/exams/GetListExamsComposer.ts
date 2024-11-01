@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ExamsRepositoryClass } from '../../../repositories/typeorm/ExamsRepositoryClass';
-import GetListExamsUseCase from '../../../usecases/Exams/GetListExamsUseCase';
+import GetListExamsUseCase from '../../../usecases/exams/GetListExamsUseCase';
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
 

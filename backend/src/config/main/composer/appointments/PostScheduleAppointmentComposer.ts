@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AppointmentRepositoryClass } from '../../../repositories/typeorm/AppointmentRepositoryClass';
-import  PostScheduleAppointmentUseCase  from '../../../usecases/Appointments/PostScheduleAppointmentUseCase'
+import  PostScheduleAppointmentUseCase  from '../../../usecases/appointments/PostScheduleAppointmentUseCase'
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
 import logger from '../../../PinoLogger';

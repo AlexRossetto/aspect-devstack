@@ -1,5 +1,5 @@
 import logger from '../../PinoLogger';
-import { AppDataSource } from '../../TypeORM/DataSource';
+import { AppDataSource } from '../../typeorm/DataSource';
 import { ExamsEntity } from './entities/ExamEntity';
 
 export class ExamsRepositoryClass {

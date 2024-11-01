@@ -2,6 +2,7 @@ import React, { createContext, useState, ReactNode, useEffect } from 'react'
 import { Appointment, AppointmentContextType } from './types'
 import api from '../services/api';
 
+
 export const AppointmentContext = createContext<AppointmentContextType | undefined>(undefined);
 
 export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -12,7 +13,6 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({ childre
       setAppointmentsList(appointments.data.data)
     }
     
-
     useEffect(() => {
         fetchAppointments();
     }, []); 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AvailableTimeRepositoryClass } from '../../../repositories/typeorm/AvailableTimeRepositoryClass';
-import  GetAvailableTimesUseCase  from '../../../usecases/AvailableTimes/GetListAvailableTimesUseCase'
+import  GetAvailableTimesUseCase  from '../../../usecases/availabletimes/GetListAvailableTimesUseCase'
 import { InternalServerError, OK } from '../../../../helpers/HttpResponse';
 
 import logger from '../../../PinoLogger';
