@@ -136,7 +136,7 @@ const CenteredFormCard = ({ availableTimes, examsList }: CenteredFormCardProps) 
               {availableTimesDate.map((availableTime: AvailableTime) => (
                 <Card
                   key={availableTime.time_id}
-                  style={{ ...(formData.selectedTime === availableTime.time_id && cardSelect) }}
+                  sx={{ ...(formData.selectedTime === availableTime.time_id && cardSelect) }}
                 >
                   <ButtonBase
                     onClick={() => setFormData(prev => ({ ...prev, selectedTime: availableTime.time_id }))}

@@ -52,7 +52,7 @@ const CardGrid = () => {
 
   return (
     <div style={cardGridContainerStyle}>
-      <Typography style={{ borderBottom: '1px solid white' }} padding={4} variant="h6" component="h2" fontWeight="bold">
+      <Typography sx={{ borderBottom: '1px solid white' }} padding={4} variant="h6" component="h2" fontWeight="bold">
         Scheduled Appointments
       </Typography>
       <div style={gridStyle}>
@@ -60,7 +60,7 @@ const CardGrid = () => {
           .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
           .map(date => (
             <div key={date} style={dateSectionStyle}>
-              <Typography variant="h6" style={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
+              <Typography variant="h6" sx={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
                 {format(parseISO(date), 'd/MM/yyyy')}
               </Typography>
               <div style={appointmentsContainerStyle}>
@@ -71,31 +71,31 @@ const CardGrid = () => {
             </div>
           ))}
       </div>
-      <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description" style={modalBackdropStyle}>
+      <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description" sx={modalBackdropStyle}>
         <Box sx={modalStyle}>
           <Typography id="modal-title" variant="h6" component="h2" fontWeight="bold" style={{ textAlign: 'center' }}>
             Appointment Details
           </Typography>
-          <Box style={{ border: '1px solid black', borderRadius: '10px', padding: '10px', margin: '10px' }}>
-            <Box style={boxStyle}>
+          <Box sx={{ border: '1px solid black', borderRadius: '10px', padding: '10px', margin: '10px' }}>
+            <Box sx={boxStyle}>
               <CalendarMonthIcon fontSize="small" style={{ marginRight: '20px' }} />
               <Typography fontWeight="bold">{selectedCard ? format(parseISO(selectedCard.appointment_date), 'd/MM/yyyy') : ''}</Typography>
             </Box>
-            <Box style={boxStyle}>
+            <Box sx={boxStyle}>
               <QueryBuilderIcon fontSize="small" style={{ marginRight: '20px' }} />
               <Typography fontWeight="bold">{selectedCard?.time.time}</Typography>
             </Box>
-            <Box style={boxStyle}>
+            <Box sx={boxStyle}>
               <MedicationIcon fontSize="small" style={{ marginRight: '20px' }} />
               <Typography fontWeight="bold">{selectedCard?.exam_name}</Typography>
             </Box>
-            <Box style={boxStyle}>
+            <Box sx={boxStyle}>
               <LocationOnIcon fontSize="small" style={{ marginRight: '20px' }} />
               <Typography fontWeight="bold">Hospital Israelita Albert Einstein</Typography>
             </Box>
           </Box>
-          <Typography style={{ textAlign: 'center' }} id="modal-description" sx={{ mt: 2 }}>
-            <Button onClick={handleClick} style={{ color: 'white', backgroundColor: 'rgb(231, 50, 50)' }}>
+          <Typography sx={{ textAlign: 'center', mt: 2 }} id="modal-description">
+            <Button onClick={handleClick} sx={{ color: 'white', backgroundColor: 'rgb(231, 50, 50)' }}>
               Cancel Appointment
             </Button>
           </Typography>
