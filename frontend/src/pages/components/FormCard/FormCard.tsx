@@ -57,6 +57,7 @@ const CenteredFormCard = ({ availableTimes, examsList }: CenteredFormCardProps) 
       if (filteredAvailableTimes.length > 0) {
         setStatus('Loaded');
       } else {
+        setFormData(prev => ({...prev, selectedTime: null}))
         setStatus('NoAvailability');
       }
     }
