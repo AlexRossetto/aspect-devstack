@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../AppointmentCard/AppointmentCard';
 import { Box, Modal, Typography, Button } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -24,9 +24,14 @@ const CardGrid = () => {
   const [open, setOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<AppointmentType| null>(null);
   const { appointmentsList, fetchAppointments } = useAppointmentContext();
+  let groupedAppointments: Record<string, AppointmentType[]> = groupAppointmentsByDate(appointmentsList); 
 
+  useEffect(() => {
+    groupedAppointments = groupAppointmentsByDate(appointmentsList);
+  }, [appointmentsList])
 
-const groupedAppointments = groupAppointmentsByDate(appointmentsList);
+  console.log(groupedAppointments, "o que tá chegando aqui caralho?")
+
 
   const handleOpen = (appointment: AppointmentType) => {
       setSelectedCard(appointment);
@@ -54,17 +59,19 @@ const groupedAppointments = groupAppointmentsByDate(appointmentsList);
         Scheduled Appointments
       </Typography>
       <div style={gridStyle}>
-        {Object.keys(groupedAppointments).map(date => (
-          <div key={date} style={dateSectionStyle}>
-            <Typography variant="h6" style={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
-              {format(parseISO(date), 'd/MM/yyyy')}
-            </Typography>
-            <div style={appointmentsContainerStyle}>
-              {groupedAppointments[date].map(appointment => (
-                <Card key={appointment.appointment_id} onClick={handleOpen} appointment={appointment} />
-              ))}
-            </div>
-          </div>
+        {Object.keys(groupedAppointments)
+  .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+  .map(date => (
+    <div key={date} style={dateSectionStyle}>
+      <Typography variant="h6" style={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
+        {format(parseISO(date), 'd/MM/yyyy')}
+      </Typography>
+      <div style={appointmentsContainerStyle}>
+        {groupedAppointments[date].map(appointment => (
+          <Card key={appointment.appointment_id} onClick={handleOpen} appointment={appointment} />
+        ))}
+      </div>
+    </div>
         ))}
       </div>
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description" style={modalBackdropStyle}>

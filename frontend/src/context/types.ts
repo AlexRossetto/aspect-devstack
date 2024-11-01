@@ -2,8 +2,8 @@ export interface Appointment {
   appointment_id: number;
   user_id: number;
   time: {
-      time_id: number;
-      time: string;
+    time_id: number;
+    time: string;
   };
   appointment_date: string;
   comments: string | null;
@@ -12,5 +12,5 @@ export interface Appointment {
 
 export interface AppointmentContextType {
   appointmentsList: Appointment[];
-  fetchAppointments: () => void; 
+  fetchAppointments: () => void;
 }
