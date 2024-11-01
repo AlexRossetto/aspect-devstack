@@ -60,19 +60,19 @@ const CardGrid = () => {
       </Typography>
       <div style={gridStyle}>
         {Object.keys(groupedAppointments)
-  .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
-  .map(date => (
-    <div key={date} style={dateSectionStyle}>
-      <Typography variant="h6" style={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
-        {format(parseISO(date), 'd/MM/yyyy')}
-      </Typography>
-      <div style={appointmentsContainerStyle}>
-        {groupedAppointments[date].map(appointment => (
-          <Card key={appointment.appointment_id} onClick={handleOpen} appointment={appointment} />
-        ))}
-      </div>
-    </div>
-        ))}
+          .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+          .map(date => (
+            <div key={date} style={dateSectionStyle}>
+              <Typography variant="h6" style={{ textAlign: 'left', marginBottom: '16px', fontWeight: 'bold' }}>
+                {format(parseISO(date), 'd/MM/yyyy')}
+              </Typography>
+              <div style={appointmentsContainerStyle}>
+                {groupedAppointments[date].map(appointment => (
+                  <Card key={appointment.appointment_id} onClick={handleOpen} appointment={appointment} />
+                ))}
+              </div>
+            </div>
+          ))}
       </div>
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description" style={modalBackdropStyle}>
         <Box sx={modalStyle}>
